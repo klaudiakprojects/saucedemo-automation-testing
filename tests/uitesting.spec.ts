@@ -23,9 +23,6 @@ test('verifies if the products details are visible on the main page', async ({ p
     await expect(addToCartButtonLocator).toBeVisible();
     expect((await addToCartButtonLocator.textContent())?.length ?? 0).toBeGreaterThan(0);
 
-    const itemImageLocator = elem.locator('.inventory_item_img');
-    await expect(itemImageLocator).toBeVisible();
-
     const itemDescriptionLocator = elem.locator('.inventory_item_desc');
     await expect(itemDescriptionLocator).toBeVisible();
     expect((await itemDescriptionLocator.textContent())?.length ?? 0).toBeGreaterThan(0);

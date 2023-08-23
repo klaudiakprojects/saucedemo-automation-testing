@@ -14,7 +14,7 @@ export class MakingAnOrder {
   }
 }
 
-test('test', async ({ page }) => {
+test('Order flow testing', async ({ page }) => {
   const loginPage = new LoginPagePOM(page);
   const basketPage = new BasketPagePOM(page);
   const checkoutPage = new CheckoutPagePOM(page);
