@@ -1,5 +1,7 @@
 export const testData = {
     login: 'standard_user',
+    lockedOutUser: 'locked_out_user',
+    performanceGlitchUser: 'performance_glitch_user',
     password: 'secret_sauce',
     firstName: 'Name',
     lastName: 'Surname',
