@@ -28,6 +28,9 @@ test('verifies if sorting works correctly', async ({ page }) => {
   await loginPage.loggingIn(testData.login, testData.password);
   await mainPageAfterLogin.sortLowToHighPrices();
   await mainPageAfterLogin.sortHighToLowPrices();
+  await mainPageAfterLogin.sortNameFromAToZ();
+  await mainPageAfterLogin.sortNameFromZToA();
+
 
 });
 

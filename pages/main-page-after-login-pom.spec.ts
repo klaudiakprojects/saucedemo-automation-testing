@@ -6,12 +6,14 @@ export class MainPageAfterLoginPOM {
     readonly allInventoryItems: Locator;
     readonly sortButton: Locator;
     readonly itemsPriceLocator: Locator;
+    readonly itemsNameLocator: Locator;
 
     constructor(page: Page) {
         this.page = page;
         this.inventoryItems = page.locator('.inventory_item');
         this.sortButton = page.locator('.product_sort_container');
         this.itemsPriceLocator = page.locator('.inventory_item_price');
+        this.itemsNameLocator = page.locator('.inventory_item_name');
     }
 
     async verifyingMainPageProductsDetails(): Promise<void> {
@@ -73,5 +75,35 @@ export class MainPageAfterLoginPOM {
             expect(itemPrices2[i]).toBeLessThanOrEqual(itemPrices2[i - 1]);
         }
     }
+    async sortNameFromAToZ(): Promise<void> {
+        await this.sortButton.selectOption({ label: 'Name (A to Z)' });
+        const itemNameElements = await this.itemsNameLocator.all()
+        const itemNames: string[] = [];
 
+        for (let i = 0; i < itemNameElements.length; i++) {
+            const itemName = await itemNameElements[i].textContent();
+            if (itemName !== null) {
+                itemNames.push(itemName);
+            }
+            const sortedNames = itemNames.sort();
+            expect(sortedNames).toEqual(itemNames)
+        }
+    }
+
+    async sortNameFromZToA(): Promise<void> {
+        await this.sortButton.selectOption({ label: 'Name (Z to A)' });
+        const itemNameElements2 = await this.itemsNameLocator.all()
+        const itemNames2: string[] = [];
+    
+        for (let i = 0; i < itemNameElements2.length; i++) {
+            const itemName2 = await itemNameElements2[i].textContent();
+            
+            if (itemName2 !== null) {
+                itemNames2.push(itemName2); 
+            }
+        }
+    
+        const sortedNames = itemNames2.sort((a, b) => b.localeCompare(a));
+        expect(sortedNames).toEqual(itemNames2);
+    } 
 }
