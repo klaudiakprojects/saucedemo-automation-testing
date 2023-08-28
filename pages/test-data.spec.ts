@@ -9,6 +9,8 @@ export const testData = {
     lastName: 'Surname',
     postalCode: '11-000',
     item: 'Sauce Labs Backpack',
-    itemPrice: '$29.99'
+    item2: 'Sauce Labs Bike Light',
+    itemPrice: '$29.99',
+    itemPrice2: '$9.99'
   };
   

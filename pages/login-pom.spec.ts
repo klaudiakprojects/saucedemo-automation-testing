@@ -84,5 +84,23 @@ export class LoginPagePOM {
         expect(errorMessagePasswordOnly).toContain('Username is required')
         expect(URL).not.toContain('inventory');
     }
+
+    async loggingInWithUppercaseUsername(username: string, password: string): Promise<void> {
+        await this.username.fill(username.toUpperCase());
+        await this.password.fill(password);
+        await this.loggingInButton.click();
+        const errorMessagePasswordOnly = await this.errorMessage.textContent();
+        expect(errorMessagePasswordOnly).toContain('Username and password do not match any user in this service')
+        expect(URL).not.toContain('inventory');
+    }
+
+    async loggingInWithUppercasePassword(username: string, password: string): Promise<void> {
+        await this.username.fill(username);
+        await this.password.fill(password.toUpperCase());
+        await this.loggingInButton.click();
+        const errorMessagePasswordOnly = await this.errorMessage.textContent();
+        expect(errorMessagePasswordOnly).toContain('Username and password do not match any user in this service')
+        expect(URL).not.toContain('inventory');
+    }
 }
 

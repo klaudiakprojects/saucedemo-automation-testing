@@ -58,3 +58,17 @@ test('verifies if user cant login when entering only username', async ({ page })
     await loginPage.goto();
     await loginPage.loggingInWithUsernameOnly(testData.login);
 })
+
+test('verifies if user cant login with uppercase username', async ({ page }) => {
+    const loginPage = new LoginPagePOM(page);
+
+    await loginPage.goto();
+    await loginPage.loggingInWithUppercaseUsername(testData.login, testData.password);
+})
+
+test('verifies if user cant login with uppercase password', async ({ page }) => {
+    const loginPage = new LoginPagePOM(page);
+
+    await loginPage.goto();
+    await loginPage.loggingInWithUppercasePassword(testData.login, testData.password);
+})

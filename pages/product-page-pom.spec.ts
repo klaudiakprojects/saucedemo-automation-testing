@@ -25,6 +25,7 @@ export class ProductPagePOM {
         await this.item.click();
         await this.addToCartButton.click();
     }
+
     async getPriceFromProductPage(): Promise<string> {
         const itemPrice = await this.itemPrice.innerText();
         return itemPrice;
