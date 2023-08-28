@@ -29,4 +29,5 @@ export class ProductPagePOM {
         const itemPrice = await this.itemPrice.innerText();
         return itemPrice;
     }
+
 }

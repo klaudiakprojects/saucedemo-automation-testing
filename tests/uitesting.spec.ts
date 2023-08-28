@@ -30,7 +30,5 @@ test('verifies if sorting works correctly', async ({ page }) => {
   await mainPageAfterLogin.sortHighToLowPrices();
   await mainPageAfterLogin.sortNameFromAToZ();
   await mainPageAfterLogin.sortNameFromZToA();
-
-
 });
 

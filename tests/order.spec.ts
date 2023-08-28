@@ -13,7 +13,7 @@ export class MakingAnOrder {
   }
 }
 
-test('Order flow testing', async ({ page }) => {
+test('order flow', async ({ page }) => {
   const loginPage = new LoginPagePOM(page);
   const basketPage = new BasketPagePOM(page);
   const checkoutPage = new CheckoutPagePOM(page);
@@ -26,3 +26,16 @@ test('Order flow testing', async ({ page }) => {
   await checkoutPage.checkout(testData.firstName, testData.lastName, testData.postalCode);
   await checkoutPage.checkoutVerifying(testData.item, testData.itemPrice);
 });
+
+test('deleting one and only product from basket', async ({ page }) => {
+  const loginPage = new LoginPagePOM(page);
+  const productPage = new ProductPagePOM(page);
+  const basketPage = new BasketPagePOM(page);
+
+  await loginPage.goto();
+  await loginPage.loggingIn(testData.login, testData.password);
+  await productPage.choosingItem(testData.item, testData.itemPrice);
+  await basketPage.removingFirstItemFromBasket(testData.item);
+
+});
+
