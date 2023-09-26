@@ -4,20 +4,20 @@ import { testData } from '../pages/test-data.spec';
 
 export class MakingAnOrder {
     readonly page: Page;
-  
-    constructor(page: Page) {
-      this.page = page;
-    }
-  }
 
-  test('verifies if user can login using standard account', async ({ page }) => {
+    constructor(page: Page) {
+        this.page = page;
+    }
+}
+
+test('verifies if user can login using standard account', async ({ page }) => {
     const loginPage = new LoginPagePOM(page);
 
     await loginPage.goto();
     await loginPage.loggingIn(testData.login, testData.password);
 })
 
-  test('verifies if user cant login using locked out account', async ({ page }) => {
+test('verifies if user cant login using locked out account', async ({ page }) => {
     const loginPage = new LoginPagePOM(page);
 
     await loginPage.goto();

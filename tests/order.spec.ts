@@ -39,4 +39,16 @@ test('deleting one and only product from basket', async ({ page }) => {
 
 });
 
+test('deleting one of two products from the basket', async ({ page }) => {
+  const loginPage = new LoginPagePOM(page);
+  const productPage = new ProductPagePOM(page);
+  const basketPage = new BasketPagePOM(page);
+
+  await loginPage.goto();
+  await loginPage.loggingIn(testData.login, testData.password);
+  await productPage.choosingTwoItems(testData.item, testData.itemPrice, testData.item2, testData.itemPrice2);
+  await basketPage.removingOneOfTwoItemsFromBasket(testData.item, testData.item2);
+
+});
+
 

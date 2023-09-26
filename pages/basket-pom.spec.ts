@@ -36,4 +36,13 @@ export class BasketPagePOM {
         expect(this.cartList).not.toContain(item)
     }
 
+    async removingOneOfTwoItemsFromBasket(item: string, item2: string): Promise<void> {
+        await this.basket.click();
+
+        await this.removeSauceLabsBackpack.click();
+        expect(this.cartList).not.toContain(item);
+        // expect(this.cartList).toContain(item2);
+        await expect(this.cartList).toHaveCount(1);
+
+    }
 }
